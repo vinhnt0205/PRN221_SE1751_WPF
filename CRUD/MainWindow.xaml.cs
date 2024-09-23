@@ -28,7 +28,31 @@ namespace CRUD
             load();
             //loadDepartFilter();
             //cbxSearchIn.ItemsSource = elements;
-            cbxDept.ItemsSource = PRN221_SE1751Context.Ins.Departments.Select(x => x.Name).ToList();
+            //cbxDept.ItemsSource = PRN221_SE1751Context.Ins.Departments.Select(x => x.Name).ToList();
+            loadDeptRadio();
+        }
+
+        private void loadDeptRadio(string id = "SE")
+        {
+            spnDept.Children.Clear();
+            foreach (var  item in PRN221_SE1751Context.Ins.Departments)
+            {
+                RadioButton rd = new RadioButton()
+                {
+                    Content = item.Name,
+                    Name = item.Id,
+                    IsChecked = item.Id.Equals(id)
+                };
+                rd.Click += Rd_Click;
+                spnDept.Children.Add(rd);
+
+            }
+        }
+
+        private void Rd_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButton rd = sender as RadioButton;
+            spnDept.Tag = rd.Name;
         }
 
         private void loadDepartFilter()
@@ -119,6 +143,11 @@ namespace CRUD
             //{
             //    MessageBox.Show("null");
             //}
+            var st = dgvDisplay.SelectedItem as Student;
+            if(st != null)
+            {
+                loadDeptRadio(st.DepartId);
+            }
         }
         //BTVN kết hợp Gender và Department
         //theo điều kiện and và diều kiện or
@@ -131,8 +160,9 @@ namespace CRUD
                 int id = int.Parse(txtId.Text);
                 string name = txtName.Text;
                 bool gender = rdbMale.IsChecked.Value;
-                string deptId = PRN221_SE1751Context.Ins.Departments
-                    .FirstOrDefault(x => x.Name == cbxDept.SelectedItem.ToString()).Id;
+                //string deptId = PRN221_SE1751Context.Ins.Departments
+                //    .FirstOrDefault(x => x.Name == cbxDept.SelectedItem.ToString()).Id;
+                string deptId = spnDept.Tag.ToString();
                 DateTime? dob = dpkDob.SelectedDate.Value;
                 float gpa = float.Parse(txtGpa.Text);
                 return new Student()
@@ -151,7 +181,8 @@ namespace CRUD
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Student student = getStudent();
-            if (student == null) { clearForm();  return; }
+            if(student == null)
+            { clearForm(); return; }
             var x = PRN221_SE1751Context.Ins.Students.Find(student.Id);
             if(x == null)
             {
@@ -172,7 +203,7 @@ namespace CRUD
             rdbFemale.IsChecked = true;
             rdbMale.IsChecked = false;
             dpkDob.SelectedDate = null;
-            cbxDept .SelectedIndex = 0;
+            //cbxDept.SelectedIndex = 0;
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -181,7 +212,7 @@ namespace CRUD
             if(student == null)
             { clearForm(); return; }
             var x = PRN221_SE1751Context.Ins.Students.Find(student.Id);
-            
+
             if(x != null)
             {
                 x.Name = student.Name;
@@ -205,7 +236,7 @@ namespace CRUD
             {
                 var x = PRN221_SE1751Context.Ins.Students.Find(int.Parse(txtId.Text));
                 MessageBoxResult result = MessageBox.Show("Do you want to delete this student?", "Confirmation", MessageBoxButton.YesNoCancel);
-                if(x != null && result==MessageBoxResult.Yes)
+                if(x != null && result == MessageBoxResult.Yes)
                 {
                     PRN221_SE1751Context.Ins.Students.Remove(x);
                     PRN221_SE1751Context.Ins.SaveChanges();
@@ -214,7 +245,8 @@ namespace CRUD
             }
             catch
             {
-                clearForm(); return;
+                clearForm();
+                return;
             }
         }
         //BTVN:
@@ -222,5 +254,11 @@ namespace CRUD
         //Department: checkbox(chi chon dc 1), combo, radio
         //Filter: thay datagrid = listview
         //Binding du lieu voi gender la combobox 
+
+        //BTVN(23/9/2024)
+        //thay the radio = group checkbox (chi co 1 checkbox dc lua chon)
+        //filter lua chon nhieu department vd: sv thuoc SE hoac AI
+
+
     }
 }

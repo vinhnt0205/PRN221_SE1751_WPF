@@ -106,6 +106,14 @@
                               SelectedValue="{Binding ElementName=dgvDisplay, Path=SelectedItem.Depart.Name, Mode=OneWay}"/>
                 </WrapPanel>
                 <WrapPanel Orientation="Horizontal">
+                    <Label Content="Department"
+                           Width="Auto" />
+                    <StackPanel x:Name="spnDept"
+                                Orientation="Vertical">
+                        
+                    </StackPanel>
+                </WrapPanel>
+                <WrapPanel Orientation="Horizontal">
                     <Label Content="Dob"
                            Width="50" />
                     <DatePicker Name="dpkDob"

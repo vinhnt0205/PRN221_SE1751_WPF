@@ -1,0 +1,18 @@
+﻿@page
+@model DemoRazor.Pages.DemoSendData.CreateModel
+@{
+}
+<h1>Welcom to Send data</h1>
+<h2>@Model.id</h2>
+<h2>@Model.name</h2>
+@* <form asp-page="Add" method="post">
+    <label>Id</label> : <input type="text" name="id" value="" /><br/>
+    <label>Name</label> : <input type="text" name="name" value="" /><br/>
+    <input type="submit" name="submit" value="Create" />
+</form> *@
+
+<form asp-page="Add" method="post">
+    <label>Id</label> : <input type="text" asp-for="@Model.id" value="" /><br />
+    <label>Name</label> : <input type="text" asp-for="@Model.name" value="" /><br />
+    <input type="submit" name="submit" value="Create" />
+</form>

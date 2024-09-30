@@ -1,0 +1,27 @@
+﻿@page
+@model LoadDBRazor.Pages.Stu.IndexModel
+@{
+}
+<h1>Welcome to Student Page</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Department</th>
+        <th>Dob</th>
+        <th>Gpa</th>
+    </tr>
+    @foreach (var item in Model.students)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@(item.Gender?"Male":"Female")</td>
+            <td>@item.Depart.Name</td>
+            <td>@item.Dob</td>
+            <td>@item.Gpa</td>
+        </tr>
+    }
+</table>

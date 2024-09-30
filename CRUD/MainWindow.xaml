@@ -26,7 +26,7 @@
                                     Binding="{Binding Id}" />
                 <DataGridTextColumn Header="FullName"
                                     Width="Auto"
-                                    Binding="{Binding Name}" />
+                                    Binding="{Binding Name}" /> 
                 <DataGridTextColumn Header="Gender"
                                     Width="Auto"
                                     Binding="{Binding Gender}" />

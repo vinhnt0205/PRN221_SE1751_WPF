@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD", "CRUD\CRUD.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD_TXT_JSON_XML", "CRUD_TXT_JSON_XML\CRUD_TXT_JSON_XML.csproj", "{6A670A4C-5A58-46D2-A44D-A03221913DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoRazor", "DemoRazor\DemoRazor.csproj", "{71BDDA1D-CBB1-4ABE-BE6D-D4E8B5856B70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoRazor", "DemoRazor\DemoRazor.csproj", "{71BDDA1D-CBB1-4ABE-BE6D-D4E8B5856B70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadDBRazor", "LoadDBRazor\LoadDBRazor.csproj", "{AABE6E08-3F1D-4D63-B76F-AA7EE88010FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadDBRazor", "LoadDBRazor\LoadDBRazor.csproj", "{AABE6E08-3F1D-4D63-B76F-AA7EE88010FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
